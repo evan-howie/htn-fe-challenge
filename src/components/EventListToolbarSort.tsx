@@ -10,7 +10,7 @@ const EventListToolbarSort: React.FC<EventListToolbarSortProps> = ({
 }) => {
   return (
     <button className="bg-white text-gray-700 py-1 px-6" onClick={toggleSort}>
-      Sort by Start Date {sortAsc ? "⬆" : "⬇"}
+      Sort by Start Date {sortAsc ? "⬇" : "⬆"}
     </button>
   );
 };
