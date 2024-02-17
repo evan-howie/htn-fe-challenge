@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import EventList from "../components/EventList";
 import { TEvent } from "../types/Event";
+import { useAuth } from "../contexts/AuthContext";
 
 const Home = () => {
   const [events, setEvents] = useState<TEvent[]>([]);
+  const { isAuthenticated } = useAuth();
 
   useEffect(() => {
     fetch("https://api.hackthenorth.com/v3/events")
       .then((res) => res.json())
-      .then((data: TEvent[]) => {
-        setEvents(data);
+      .then((events: TEvent[]) => {
+        if (!isAuthenticated) {
+          events = events.filter((event) => event.permission === "public");
+        }
+        setEvents(events);
       });
   }, []);
 

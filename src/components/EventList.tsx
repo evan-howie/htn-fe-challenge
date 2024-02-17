@@ -14,7 +14,7 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
     setSortAsc(!sortAsc);
   }
 
-  function sortedEvents() {
+  function sortedEvents(events: TEvent[]) {
     return events.sort((a, b) => {
       if (sortAsc) return a.start_time - b.start_time;
       return b.start_time - a.start_time;
@@ -22,7 +22,7 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
   }
 
   function eventList() {
-    return sortedEvents().map((event) => (
+    return sortedEvents(events).map((event) => (
       <Event key={event.id} event={event} />
     ));
   }
