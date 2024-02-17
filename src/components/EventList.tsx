@@ -1,6 +1,6 @@
 import React from "react";
 import { TEvent } from "../types/Event";
-import Event from "./Event";
+import EventListEntry from "./EventListEntry";
 import EventListToolbar from "./EventListToolbar";
 
 type EventListProps = {
@@ -23,12 +23,12 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
 
   function eventList() {
     return sortedEvents(events).map((event) => (
-      <Event key={event.id} event={event} />
+      <EventListEntry key={event.id} event={event} />
     ));
   }
 
   return (
-    <div className="container py-6 mx-auto px-10 flex flex-col gap-2">
+    <div className="container py-6 mx-auto px-6 sm:px-10 md:px-24 flex flex-col gap-2">
       <EventListToolbar sortAsc={sortAsc} toggleSort={toggleSort} />
       {eventList()}
     </div>

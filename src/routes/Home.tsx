@@ -20,7 +20,7 @@ const Home = () => {
 
   return (
     <div className="flex flex-col w-full min-h-screen">
-      <header className="py-10 bg-gray-100 border-t-2 border-gray-200 dark:border-gray-800">
+      <header className="py-10 bg-gray-100">
         <h1 className="text-3xl font-bold sm:text-4xl md:text-5xl text-center">
           Upcoming Events
         </h1>
