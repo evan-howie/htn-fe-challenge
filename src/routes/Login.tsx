@@ -14,7 +14,7 @@ const Login = () => {
   const [password, setPassword] = React.useState("");
   const [error, setError] = React.useState("");
   const navigate = useNavigate();
-  const { login } = useAuth();
+  const { isAuthenticated, login } = useAuth();
 
   function onSubmit(event: React.FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -26,6 +26,16 @@ const Login = () => {
       navigate("/");
     }
     setError("Invalid email or password");
+  }
+
+  if (isAuthenticated) {
+    return (
+      <div className="flex justify-center py-5">
+        <h1 className="text-xl md:text-3xl font-bold text-gray-900">
+          You are already logged in
+        </h1>
+      </div>
+    );
   }
 
   return (
