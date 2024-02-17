@@ -1,6 +1,5 @@
 import React from "react";
 import EventListToolbarSort from "./EventListToolbarSort";
-import EventListToolbarLogin from "./EventListToolbarLogin";
 
 type EventListToolbarProps = {
   sortAsc: boolean;
@@ -14,7 +13,6 @@ const EventListToolbar: React.FC<EventListToolbarProps> = ({
   return (
     <div className="bg-gray-700 text-white p-3 flex gap-2">
       <EventListToolbarSort sortAsc={sortAsc} toggleSort={toggleSort} />
-      <EventListToolbarLogin />
     </div>
   );
 };
