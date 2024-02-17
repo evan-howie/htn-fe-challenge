@@ -3,11 +3,9 @@ import EventList from "../components/EventList";
 import { TEvent } from "../types/Event";
 
 const Home = () => {
-  // set the initial state of events to an empty TEvent[]
   const [events, setEvents] = useState<TEvent[]>([]);
 
   useEffect(() => {
-    // get all events from the API and set the state
     fetch("https://api.hackthenorth.com/v3/events")
       .then((res) => res.json())
       .then((data: TEvent[]) => {
