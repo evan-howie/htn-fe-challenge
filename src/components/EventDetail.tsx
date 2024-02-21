@@ -25,15 +25,17 @@ const EventDetail: React.FC<EventDetailProps> = ({ event }) => {
 
         <div className="py-4"></div>
 
-        <h3>
-          Public URL:{" "}
-          <a
-            href={event.public_url}
-            className="text-gray-600 hover:text-gray-500"
-          >
-            {event.public_url}
-          </a>
-        </h3>
+        {event.public_url && (
+          <h3>
+            Public URL:{" "}
+            <a
+              href={event.public_url}
+              className="text-gray-600 hover:text-gray-500"
+            >
+              {event.public_url}
+            </a>
+          </h3>
+        )}
 
         <h3>
           Hacker URL:{" "}
