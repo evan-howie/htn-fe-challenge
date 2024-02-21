@@ -12,6 +12,7 @@ const Home = () => {
       .then((res) => res.json())
       .then((events: TEvent[]) => {
         if (!isAuthenticated) {
+          // if permission missing, assume private
           events = events.filter((event) => event.permission === "public");
         }
         setEvents(events);
