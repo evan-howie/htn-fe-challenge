@@ -10,6 +10,7 @@ type EventListProps = {
 const EventList: React.FC<EventListProps> = ({ events }) => {
   const [sortAsc, setSortAsc] = React.useState(true);
   const [filterType, setFilterType] = React.useState("");
+  const [searchQuery, setSearchQuery] = React.useState("");
 
   function toggleSort() {
     setSortAsc(!sortAsc);
@@ -27,10 +28,19 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
     return events.filter((event) => event.event_type === filterType);
   }
 
+  function searchedEvents(events: TEvent[], query: string) {
+    return events.filter((event) => {
+      return (
+        event.name.toLowerCase().includes(query.toLowerCase()) ||
+        event.description?.toLowerCase().includes(query.toLowerCase())
+      );
+    });
+  }
+
   function eventList() {
-    return sortedEvents(filteredEvents(events)).map((event) => (
-      <EventListEntry key={event.id} event={event} />
-    ));
+    return sortedEvents(
+      searchedEvents(filteredEvents(events), searchQuery)
+    ).map((event) => <EventListEntry key={event.id} event={event} />);
   }
 
   return (
@@ -39,6 +49,7 @@ const EventList: React.FC<EventListProps> = ({ events }) => {
         sortAsc={sortAsc}
         toggleSort={toggleSort}
         filter={setFilterType}
+        search={setSearchQuery}
       />
       {eventList()}
     </div>
